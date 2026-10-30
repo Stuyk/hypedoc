@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HypeDoc — write HTML, ship a gorgeous README</title>
+<meta name="hypedoc:width" content="960">
+<style>
+  :root { --paper: #f3efe6; --ink: #4a2f3a; --muted: #5e4651; --cyan: #44adcb; --stone: #ddd8ce; --chalk: #fbf9f4; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 8px 16px 16px 8px; font-family: Inter, Arimo, ui-sans-serif, system-ui, sans-serif; color: var(--ink); }
+  .card { background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M18 12v12M12 18h12' stroke='%23e2dccf' stroke-width='2'/%3E%3C/svg%3E");
+    border: 3px solid var(--ink); border-radius: 12px; box-shadow: 6px 6px 0 var(--ink); overflow: hidden; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border: 2.5px solid var(--ink); border-radius: 8px; box-shadow: 3px 3px 0 var(--ink);
+    background: var(--chalk); color: var(--ink); font: 800 12.5px/1 Arimo, Inter, sans-serif; letter-spacing: .06em; text-transform: uppercase; padding: 9px 13px; }
+  .cyan { background: var(--cyan); } .stone { background: var(--stone); }
+
+  nav { display: flex; align-items: center; gap: 10px; padding: 14px 32px; border-bottom: 3px solid var(--ink); background: var(--paper); }
+  nav .logo { font-size: 14px; letter-spacing: .1em; margin-right: 26px; }
+  nav .spacer { flex: 1; }
+
+  .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 24px; align-items: center; padding: 48px 32px 52px; }
+  h1 { margin: 0; font: 900 62px/1 "Inter Display", Inter, sans-serif; letter-spacing: -0.035em; }
+  .lead { margin: 22px 0 28px; font-size: 18.5px; line-height: 1.6; color: var(--muted); max-width: 470px; font-weight: 500; }
+  .ctas { display: flex; gap: 14px; }
+  .ctas .btn { font: 700 15px/1 Inter, sans-serif; letter-spacing: 0; text-transform: none; padding: 13px 18px; box-shadow: 4px 4px 0 var(--ink); white-space: nowrap; }
+  .ctas code { font: 700 14.5px "JetBrains Mono", "DejaVu Sans Mono", monospace; }
+
+  .frame { position: relative; width: 330px; height: 330px; margin-left: auto; margin-right: 10px; background: var(--cyan);
+    border: 3px solid var(--ink); border-radius: 8px; box-shadow: 7px 7px 0 var(--ink); transform: rotate(2.5deg); }
+  .doc { position: absolute; left: 28px; right: 28px; top: 34px; background: var(--chalk); border: 3px solid var(--ink); border-radius: 8px;
+    box-shadow: 5px 5px 0 var(--ink); transform: rotate(-4deg); overflow: hidden; }
+  .bar { display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-bottom: 3px solid var(--ink); background: var(--stone);
+    font: 800 11.5px/1 "JetBrains Mono", "DejaVu Sans Mono", monospace; }
+  .bar i { width: 10px; height: 10px; border: 2.5px solid var(--ink); border-radius: 50%; background: var(--chalk); }
+  .bar span { margin-left: 4px; }
+  .shot { margin: 12px; height: 108px; border: 2.5px solid var(--ink); border-radius: 6px; background: var(--paper);
+    display: grid; place-items: center; font: 900 25px/1 "Inter Display", Inter, sans-serif; letter-spacing: -0.04em; }
+  .shot b { background: var(--cyan); border: 2.5px solid var(--ink); border-radius: 5px; padding: 4px 10px 6px; box-shadow: 3px 3px 0 var(--ink); }
+  .ln { height: 9px; border-radius: 5px; background: var(--stone); margin: 10px 14px; }
+  .tag { position: absolute; right: -18px; bottom: 20px; transform: rotate(-6deg); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <nav>
+      <span class="btn cyan logo">HypeDoc</span>
+      <span class="btn cyan">Build</span><span class="btn">Init</span><span class="btn">Guide</span><span class="btn">Strip</span>
+      <span class="spacer"></span>
+      <span class="btn stone">Single Go binary</span>
+    </nav>
+    <div class="hero">
+      <div>
+        <h1>Write HTML.<br>Ship a gorgeous README.</h1>
+        <p class="lead">HypeDoc screenshots your HTML into crisp, high-DPI graphics and pins them to the top of your docs. Everything else stays exactly where you left it.</p>
+        <div class="ctas">
+          <span class="btn cyan"><code>hypedoc build</code></span>
+          <span class="btn">Read the guide</span>
+          <span class="btn stone">Agent-ready</span>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="doc">
+          <div class="bar"><i></i><i></i><i></i><span>README.md</span></div>
+          <div class="shot"><b>Your hero</b></div>
+          <div class="ln" style="width:64%"></div>
+          <div class="ln" style="width:86%"></div>
+          <div class="ln" style="width:50%"></div>
+        </div>
+        <span class="btn tag">✦ 2× PNG</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# HypeDoc
+
+> HypeDoc is a single-binary Go CLI that renders self-contained HTML files into high-DPI PNG graphics with headless Chromium and pins them to the top of a markdown document (usually README.md) inside a managed `<!-- hypedoc:start -->` … `<!-- hypedoc:end -->` block. Content outside the block is preserved byte for byte, and re-runs are idempotent. It is designed to be driven by AI agents.
+
+Key commands: `hypedoc init` (starter `.hypedoc/01-hero.html`), `hypedoc build [--doc README.md] [--json]` (render and update the doc), `hypedoc guide` (authoring rules for agents), `hypedoc strip` (remove the block). HTML that defines `@media (prefers-color-scheme: dark)` rules is rendered in light and dark and emitted as a theme-aware `<picture>`.
+
+## Docs
+
+- [README](README.md): install, usage, flags, per-file meta tags
+- [Authoring guide](internal/assets/GUIDE.md): rules for designing graphics (same text as `hypedoc guide`)
+- [Agent skill](skills/hypedoc/SKILL.md): step-by-step workflow for using HypeDoc in another repo
+
+## Contributing
+
+- [AGENTS.md](AGENTS.md): repo layout, commands, rules for agents changing this codebase
+- [Release workflow](.github/workflows/release.yml): bumping `version.txt` on main cuts a release
+
+## Optional
+
+- [Install script](install.sh): downloads and checksum-verifies the latest release binary
+- [Example graphics](.hypedoc): the HTML sources for this README's own graphics

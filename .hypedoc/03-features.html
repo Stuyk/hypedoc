@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Features: single binary, theme-aware, agent-native, preserves docs, idempotent, retina crisp</title>
+<meta name="hypedoc:width" content="960">
+<style>
+  :root { --paper: #f3efe6; --ink: #4a2f3a; --muted: #5e4651; --cyan: #44adcb; --stone: #ddd8ce; --chalk: #fbf9f4; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 8px 16px 16px 8px; font-family: Inter, Arimo, ui-sans-serif, system-ui, sans-serif; color: var(--ink); }
+  .card { background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M18 12v12M12 18h12' stroke='%23e2dccf' stroke-width='2'/%3E%3C/svg%3E");
+    border: 3px solid var(--ink); border-radius: 12px; box-shadow: 6px 6px 0 var(--ink); padding: 36px 32px 40px; }
+  h2 { margin: 0 0 28px; font: 900 46px/1 "Inter Display", Inter, sans-serif; letter-spacing: -0.035em; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .tile { background: var(--chalk); border: 3px solid var(--ink); border-radius: 10px; box-shadow: 5px 5px 0 var(--ink); padding: 20px 20px 22px; }
+  .tile.hot { background: var(--cyan); }
+  .ico { display: inline-flex; align-items: center; justify-content: center; min-width: 46px; height: 40px; padding: 0 10px; margin-bottom: 16px;
+    border: 2.5px solid var(--ink); border-radius: 8px; background: var(--stone); box-shadow: 3px 3px 0 var(--ink);
+    font: 800 17px/1 "JetBrains Mono", "DejaVu Sans Mono", monospace; }
+  .hot .ico { background: var(--chalk); }
+  h3 { margin: 0 0 6px; font: 900 23px/1.1 "Inter Display", Inter, sans-serif; letter-spacing: -0.04em; }
+  p { margin: 0; font-size: 15.5px; line-height: 1.5; font-weight: 500; }
+  p code { font: 700 14px "JetBrains Mono", "DejaVu Sans Mono", monospace; white-space: nowrap; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>Why it's good.</h2>
+    <div class="grid">
+      <div class="tile hot"><span class="ico">1×</span><h3>One binary</h3><p>Go, no runtime. Brings its own Chromium if you don't have one.</p></div>
+      <div class="tile"><span class="ico">◐</span><h3>Theme-aware</h3><p>Use <code>prefers-color-scheme</code> and get light + dark images, auto-switched on GitHub.</p></div>
+      <div class="tile"><span class="ico">{ }</span><h3>Agent-native</h3><p><code>guide</code> teaches the rules. <code>--json</code> reports every image.</p></div>
+      <div class="tile"><span class="ico">≡</span><h3>Preserves docs</h3><p>Only the marked block is rewritten. The rest is untouched.</p></div>
+      <div class="tile"><span class="ico">↻</span><h3>Idempotent</h3><p>Same input, same doc. Run it on every commit. Stale PNGs cleaned.</p></div>
+      <div class="tile hot"><span class="ico">2×</span><h3>Retina crisp</h3><p>High-DPI PNGs with transparent edges that sit on any background.</p></div>
+    </div>
+  </div>
+</body>
+</html>

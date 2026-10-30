@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>How it works: author HTML, render with headless Chromium, pin to the README, preserve everything else</title>
+<meta name="hypedoc:width" content="960">
+<style>
+  :root { --paper: #f3efe6; --ink: #4a2f3a; --muted: #5e4651; --cyan: #44adcb; --stone: #ddd8ce; --chalk: #fbf9f4; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 8px 16px 16px 8px; font-family: Inter, Arimo, ui-sans-serif, system-ui, sans-serif; color: var(--ink); }
+  .card { background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M18 12v12M12 18h12' stroke='%23e2dccf' stroke-width='2'/%3E%3C/svg%3E");
+    border: 3px solid var(--ink); border-radius: 12px; box-shadow: 6px 6px 0 var(--ink); padding: 36px 32px 40px; }
+  .btn { display: inline-flex; align-items: center; border: 2.5px solid var(--ink); border-radius: 8px; box-shadow: 3px 3px 0 var(--ink);
+    background: var(--chalk); font: 800 12.5px/1 Arimo, Inter, sans-serif; letter-spacing: .06em; text-transform: uppercase; padding: 9px 13px; }
+  .head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 30px; }
+  h2 { margin: 0; font: 900 46px/1 "Inter Display", Inter, sans-serif; letter-spacing: -0.035em; }
+  .row { display: grid; grid-template-columns: 1fr 26px 1fr 26px 1fr 26px 1fr; align-items: stretch; }
+  .step { background: var(--chalk); border: 3px solid var(--ink); border-radius: 10px; box-shadow: 5px 5px 0 var(--ink); padding: 18px 18px 20px; }
+  .step.hot { background: var(--cyan); }
+  .n { display: inline-block; font: 800 13px/1 Arimo, sans-serif; letter-spacing: .08em; border: 2.5px solid var(--ink); border-radius: 6px;
+    padding: 6px 9px; background: var(--stone); box-shadow: 2px 2px 0 var(--ink); margin-bottom: 16px; }
+  .hot .n { background: var(--chalk); }
+  h3 { margin: 0 0 8px; font: 900 25px/1.05 "Inter Display", Inter, sans-serif; letter-spacing: -0.04em; }
+  p { margin: 0; font-size: 15.5px; line-height: 1.5; font-weight: 500; }
+  code { font: 700 13.5px "JetBrains Mono", "DejaVu Sans Mono", monospace; background: var(--paper); border: 2px solid var(--ink); border-radius: 5px; padding: 0 4px; white-space: nowrap; }
+  .go { display: grid; place-items: center; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <h2>How it works.</h2>
+      <span class="btn">One command · Zero config</span>
+    </div>
+    <div class="row">
+      <div class="step hot"><span class="n">STEP 01</span><h3>Author</h3><p>Self-contained HTML in <code>.hypedoc/</code>. Agents learn the rules from <code>guide</code>.</p></div>
+      <div class="go"><svg width="16" height="22" viewBox="0 0 16 22"><path d="M3 3 L13 11 L3 19" fill="none" stroke="#4a2f3a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><span class="n">STEP 02</span><h3>Render</h3><p>Headless Chromium captures each file at <code>2x</code>. Fonts loaded, layout settled.</p></div>
+      <div class="go"><svg width="16" height="22" viewBox="0 0 16 22"><path d="M3 3 L13 11 L3 19" fill="none" stroke="#4a2f3a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><span class="n">STEP 03</span><h3>Pin</h3><p>Images land in one marked block at the top of your doc.</p></div>
+      <div class="go"><svg width="16" height="22" viewBox="0 0 16 22"><path d="M3 3 L13 11 L3 19" fill="none" stroke="#4a2f3a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><span class="n">STEP 04</span><h3>Preserve</h3><p>Everything below the block stays byte-for-byte. Re-runs change nothing.</p></div>
+    </div>
+  </div>
+</body>
+</html>

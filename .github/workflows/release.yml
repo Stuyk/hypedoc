@@ -1,0 +1,67 @@
+name: release
+
+# Bump version.txt on main → tests run → tag v<version> is created → GoReleaser
+# publishes binaries for linux/macOS/windows (amd64 + arm64) to GitHub Releases.
+on:
+  push:
+    branches: [main]
+    paths: [version.txt]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read and validate version.txt
+        id: version
+        run: |
+          v="$(tr -d '[:space:]' < version.txt)"
+          if ! [[ "$v" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error file=version.txt::must be semver (X.Y.Z), got '$v'"; exit 1
+          fi
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+          if git rev-parse -q --verify "refs/tags/v$v" >/dev/null; then
+            echo "::notice::v$v already released; nothing to do"
+            echo "release=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          latest="$(git tag -l 'v*' --sort=-v:refname | head -n1)"
+          if [ -n "$latest" ] && [ "$(printf '%s\n%s\n' "${latest#v}" "$v" | sort -V | tail -n1)" != "$v" ]; then
+            echo "::error file=version.txt::$v is not greater than latest release $latest"; exit 1
+          fi
+          echo "release=true" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-go@v5
+        if: steps.version.outputs.release == 'true'
+        with:
+          go-version-file: go.mod
+
+      - name: Test
+        if: steps.version.outputs.release == 'true'
+        run: make test && make smoke
+
+      - name: Tag
+        if: steps.version.outputs.release == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "v${{ steps.version.outputs.version }}" -m "hypedoc v${{ steps.version.outputs.version }}"
+          git push origin "v${{ steps.version.outputs.version }}"
+
+      - uses: goreleaser/goreleaser-action@v6
+        if: steps.version.outputs.release == 'true'
+        with:
+          version: "~> v2"
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
